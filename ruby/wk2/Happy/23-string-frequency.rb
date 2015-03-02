@@ -9,11 +9,7 @@ def find_frequency(sentence, word)
  sentence.upcase.scan(word.upcase).length
 end
 
-
-
-
-
-puts find_frequency('Ruby is The best language in the World','the')
+print find_frequency('Ruby is The best language in the World','the')
 # => 2
 
 

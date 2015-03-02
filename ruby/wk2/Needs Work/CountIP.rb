@@ -7,12 +7,22 @@
 # ipsBetween("10.0.0.0", "10.0.1.0") => returns 256
 # ipsBetween("20.0.0.10", "20.0.1.0") => returns 246
 
-def ipsBetween(start, ending)
-  start_ip = start.split"."
-  end_ip = ending.split"."
 
-  (end_ip[0].to_i * 16777216 + end_ip[1].to_i * 65536 + end_ip[2].to_i * 256 + end_ip[3].to_i) - (start_ip[0].to_i * 16777216 + start_ip[1].to_i * 65536 + start_ip[2].to_i * 256 + start_ip[3].to_i)
+def ipsBetween(start, ending)
+  end_ip = calc_items(ending.split".")
+  start_ip = calc_items(start.split".")
+  end_ip.inject(:+) - start_ip.inject(:+)
 end
+
+def calc_items(ip_address, multiplier = 256)
+  ip_address.each_index {|index| ip_address[index] = ip_address[index].to_i * (multiplier**(3-index))}
+end
+#print calc_items(["10","0","0","50"])
+
+print ipsBetween("10.0.0.0","10.0.0.50")
+
+
+
 
 #----------------------------
 #Best Practice Example

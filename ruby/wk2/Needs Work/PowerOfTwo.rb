@@ -15,3 +15,10 @@ def power_of_two?(x)
 
   return true
 end
+
+#-----------------------
+#
+
+def power_of_two_bp?(x)
+  x & (x-1)  == 0
+end

@@ -40,14 +40,31 @@ new.push(array.pop).flatten!
 return new
 
 end
-
+print snail([[1,2,3],[4,5,6],[7,8,9]])
 #-------------------------
 #Best Practice Example
 
-def snail(array)
+def snail2(array)
+
+
+  unless array.empty?
+    print (snail(array.transpose.reverse))
+    array.shift + snail(array.transpose.reverse)
+  end
+end
+#print snail2([[1,2,3],[4,5,6],[7,8,9]])
+
+def snail3(array)
   array.empty? ? [] : array.shift + snail(array.transpose.reverse)
 end
 
+#print snail3([[1,2,3],[4,5,6],[7,8,9]])
+
+def snail4(array)
+  array.empty? ? [] : array[0] + snail(array[1..-1].transpose.reverse)
+end
+
+print snail4([[1,2,3],[4,5,6],[7,8,9]])
 # 1 2 3
 # 4 5 6
 # 7 8 9

@@ -5,5 +5,11 @@
 
 def get_squares(array)
 array = Array (array)
-array.delete_if {|x| Math.sqrt(x) != Math.sqrt(x).to_i}.uniq.sort!
+array.delete_if do |x|
+  xroot = Math.sqrt(x)
+  xroot != xroot.to_i
+end.uniq.sort!
+
 end
+
+print get_squares([1,3,4,9,10])
