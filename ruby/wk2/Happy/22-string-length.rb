@@ -9,6 +9,4 @@ def length_finder(array)
   array.collect! {|x| x.length}
 end
 
-
-
 puts length_finder(['Ruby','Rails','C42'])

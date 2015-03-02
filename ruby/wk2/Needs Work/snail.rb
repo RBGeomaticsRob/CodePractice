@@ -37,7 +37,50 @@ while n > 1
 end
 
 new.push(array.pop).flatten!
-
 return new
 
 end
+
+#-------------------------
+#Best Practice Example
+
+def snail(array)
+  array.empty? ? [] : array.shift + snail(array.transpose.reverse)
+end
+
+# 1 2 3
+# 4 5 6
+# 7 8 9
+# Shift (remove first element of the array) (1,2,3)
+# 4 5 6
+# 7 8 9
+# Transpose (convert columns to rows)
+# 4 7
+# 5 8
+# 6 9
+# Reverse the Transpose
+# 6 9
+# 5 8
+# 4 7
+# Pass back to snail
+# Shift (remove first element of the array) (1,2,3,6,9)
+# 5 8
+# 4 7
+# Transpose (convert columns to rows)
+# 5 4
+# 8 7
+# Reverse the Transpose
+# 8 7
+# 5 4
+# Pass back to snail
+# Shift (remove first element of the array) (1,2,3,6,9)
+# 5 4
+# Transpose (convert columns to rows)
+# 5 4
+# Reverse the Transpose
+# 4 5
+# Pass back to snail
+# Shift (remove first element of the array) (1,2,3,6,9,4,5)
+# []
+
+

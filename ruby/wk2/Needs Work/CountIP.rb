@@ -12,5 +12,13 @@ def ipsBetween(start, ending)
   end_ip = ending.split"."
 
   (end_ip[0].to_i * 16777216 + end_ip[1].to_i * 65536 + end_ip[2].to_i * 256 + end_ip[3].to_i) - (start_ip[0].to_i * 16777216 + start_ip[1].to_i * 65536 + start_ip[2].to_i * 256 + start_ip[3].to_i)
-
 end
+
+#----------------------------
+#Best Practice Example
+
+def ipsBetween_bp(start, ending)
+  ip_to_int = lambda { |x| x.split('.').reduce(0) { |a, e| a*256+e.to_i } }
+  ip_to_int.(ending) - ip_to_int.(start)
+end
+
