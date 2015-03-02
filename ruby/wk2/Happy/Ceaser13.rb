@@ -4,7 +4,9 @@
 
 def rot13(string)
 string.chars.map { |i| (110..122).include?(i.chr.ord) || (78..90).include?(i.chr.ord) ?
-      (i.chr.ord - 13).chr : (65..78).include?(i.chr.ord) || (97..110).include?(i.chr.ord) ?
-      (i.chr.ord + 13).chr : i
-      }.join
+                  (i.chr.ord - 13).chr : (65..78).include?(i.chr.ord) ||(97..110).include?(i.chr.ord) ?
+                  (i.chr.ord + 13).chr : i
+                  }.join
 end
+
+print rot13("abcdxyz")
